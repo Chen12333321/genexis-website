@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genexis - 创新科技解决方案提供商</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        // 配置Tailwind主题颜色
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        teal: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            200: '#99f6e4',
+                            300: '#5eead4',
+                            400: '#2dd4bf',
+                            500: '#14b8a6', // 主色调：蓝绿色
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .transition-custom {
+                transition: all 0.3s ease;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 overflow-x-hidden">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2">
+                    <span class="text-teal-600 text-2xl font-bold">Genexis</span>
+                </a>
+                
+                <!-- 桌面端导航 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-teal-600 transition-custom font-medium">首页</a>
+                    <a href="#about" class="text-gray-700 hover:text-teal-600 transition-custom font-medium">关于我们</a>
+                    <a href="#services" class="text-gray-700 hover:text-teal-600 transition-custom font-medium">业务范围</a>
+                    <a href="#cases" class="text-gray-700 hover:text-teal-600 transition-custom font-medium">案例展示</a>
+                    <a href="#news" class="text-gray-700 hover:text-teal-600 transition-custom font-medium">新闻动态</a>
+                    <a href="#contact" class="text-gray-700 hover:text-teal-600 transition-custom font-medium">联系我们</a>
+                </div>
+                
+                <!-- 联系按钮 -->
+                <a href="#contact" class="hidden md:inline-block bg-teal-600 hover:bg-teal-700 text-white font-medium py-2 px-5 rounded-lg transition-custom">
+                    联系咨询
+                </a>
+                
+                <!-- 移动端汉堡菜单 -->
+                <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="#home" class="block text-gray-700 hover:text-teal-600 transition-custom py-2">首页</a>
+                <a href="#about" class="block text-gray-700 hover:text-teal-600 transition-custom py-2">关于我们</a>
+                <a href="#services" class="block text-gray-700 hover:text-teal-600 transition-custom py-2">业务范围</a>
+                <a href="#cases" class="block text-gray-700 hover:text-teal-600 transition-custom py-2">案例展示</a>
+                <a href="#news" class="block text-gray-700 hover:text-teal-600 transition-custom py-2">新闻动态</a>
+                <a href="#contact" class="block text-gray-700 hover:text-teal-600 transition-custom py-2">联系我们</a>
+                <a href="#contact" class="block bg-teal-600 hover:bg-teal-700 text-white font-medium py-2 px-4 rounded-lg text-center transition-custom">
+                    联系咨询
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区 -->
+    <section id="home" class="pt-24 md:pt-0 min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-teal-50 to-teal-100">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-teal-400 blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-teal-500 blur-3xl"></div>
+        </div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-0 relative z-10">
+            <div class="max-w-3xl">
+                <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-gray-900 mb-6 text-shadow">
+                    Genexis<br>
+                    <span class="text-teal-600">引领智能创新的先锋</span>
+                </h1>
+                <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-700 mb-8 max-w-2xl">
+                    以技术赋能产业，用创新连接未来。我们致力于为全球客户提供前沿的科技解决方案，助力企业数字化转型与可持续发展。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#about" class="bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-8 rounded-lg transition-custom text-center">
+                        了解更多
+                    </a>
+                    <a href="#contact" class="border-2 border-teal-600 text-teal-600 hover:bg-teal-50 font-medium py-3 px-8 rounded-lg transition-custom text-center">
+                        联系我们
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="hidden lg:block absolute right-0 bottom-0 w-1/2 h-full">
+            <img src="https://picsum.photos/id/180/800/1000" alt="科技创新" class="w-full h-full object-cover opacity-90" />
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">关于 Genexis</h2>
+                <div class="w-20 h-1 bg-teal-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">我们的故事</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Genexis 成立于2010年，由一群拥有深厚技术背景和创新精神的专业人士创立。多年来，我们始终专注于为各行业提供领先的技术解决方案，帮助企业应对数字化转型挑战。
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        凭借卓越的技术实力和客户至上的服务理念，我们已为全球超过500家企业提供了专业服务，涵盖金融、制造、医疗、教育等多个领域。
+                    </p>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+                        <div class="p-4">
+                            <div class="text-teal-600 text-3xl font-bold mb-2 counter" data-target="13">0</div>
+                            <p class="text-gray-600">年行业经验</p>
+                        </div>
+                        <div class="p-4">
+                            <div class="text-teal-600 text-3xl font-bold mb-2 counter" data-target="500">0</div>
+                            <p class="text-gray-600">合作客户</p>
+                        </div>
+                        <div class="p-4">
+                            <div class="text-teal-600 text-3xl font-bold mb-2 counter" data-target="20">0</div>
+                            <p class="text-gray-600">全球分支机构</p>
+                        </div>
+                        <div class="p-4">
+                            <div class="text-teal-600 text-3xl font-bold mb-2 counter" data-target="120">0</div>
+                            <p class="text-gray-600">技术专利</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <img src="https://picsum.photos/id/20/600/700" alt="公司办公环境" class="w-full h-auto rounded-lg shadow-xl" />
+                    <div class="absolute -bottom-6 -left-6 bg-teal-600 text-white p-6 rounded-lg shadow-lg max-w-xs">
+                        <h4 class="text-xl font-semibold mb-2">我们的使命</h4>
+                        <p>通过创新技术推动行业变革，为客户创造可持续的价值增长</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 业务范围 -->
+    <section id="services" class="py-20 bg-teal-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">我们的业务范围</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Genexis 提供全方位的技术解决方案，满足不同行业客户的多样化需求</p>
+                <div class="w-20 h-1 bg-teal-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 服务卡片 1 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom p-8 border-t-4 border-teal-500">
+                    <div class="w-14 h-14 bg-teal-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-code text-teal-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">软件开发</h3>
+                    <p class="text-gray-600">
+                        定制化软件开发服务，包括企业应用、移动应用和Web平台，满足客户特定业务需求。
+                    </p>
+                </div>
+                
+                <!-- 服务卡片 2 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom p-8 border-t-4 border-teal-500">
+                    <div class="w-14 h-14 bg-teal-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-cloud text-teal-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">云计算服务</h3>
+                    <p class="text-gray-600">
+                        提供云迁移、云基础设施搭建和管理服务，帮助企业降低成本，提升运营效率。
+                    </p>
+                </div>
+                
+                <!-- 服务卡片 3 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom p-8 border-t-4 border-teal-500">
+                    <div class="w-14 h-14 bg-teal-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-shield text-teal-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">网络安全</h3>
+                    <p class="text-gray-600">
+                        全方位的网络安全解决方案，包括风险评估、安全防护和应急响应服务。
+                    </p>
+                </div>
+                
+                <!-- 服务卡片 4 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom p-8 border-t-4 border-teal-500">
+                    <div class="w-14 h-14 bg-teal-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-line-chart text-teal-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">数据分析</h3>
+                    <p class="text-gray-600">
+                        利用先进的数据分析技术，帮助企业挖掘数据价值，支持业务决策和增长。
+                    </p>
+                </div>
+                
+                <!-- 服务卡片 5 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom p-8 border-t-4 border-teal-500">
+                    <div class="w-14 h-14 bg-teal-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-cogs text-teal-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">物联网解决方案</h3>
+                    <p class="text-gray-600">
+                        连接智能设备与系统，构建高效的物联网生态，实现企业智能化转型。
+                    </p>
+                </div>
+                
+                <!-- 服务卡片 6 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom p-8 border-t-4 border-teal-500">
+                    <div class="w-14 h-14 bg-teal-100 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-graduation-cap text-teal-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">技术咨询与培训</h3>
+                    <p class="text-gray-600">
+                        专业的技术咨询服务和定制化培训课程，提升企业团队的技术能力。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 案例展示 -->
+    <section id="cases" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">成功案例</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">我们与各行业领先企业合作，共同创造了众多成功案例</p>
+                <div class="w-20 h-1 bg-teal-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 案例 1 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-custom">
+                    <img src="https://picsum.photos/id/26/600/400" alt="金融行业案例" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-custom flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">全球金融集团数字化转型</h3>
+                        <p class="text-gray-200 mb-4">为领先金融机构构建了全面的数字化平台，提升业务效率300%</p>
+                        <a href="#" class="text-teal-300 hover:text-white inline-flex items-center">
+                            查看详情 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 案例 2 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-custom">
+                    <img src="https://picsum.photos/id/48/600/400" alt="制造业案例" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-custom flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">智能制造工厂解决方案</h3>
+                        <p class="text-gray-200 mb-4">为大型制造企业实施物联网系统，生产效率提升45%</p>
+                        <a href="#" class="text-teal-300 hover:text-white inline-flex items-center">
+                            查看详情 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 案例 3 -->
+                <div class="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-custom">
+                    <img src="https://picsum.photos/id/96/600/400" alt="医疗行业案例" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-custom flex flex-col justify-end p-6">
+                        <h3 class="text-xl font-semibold text-white mb-2">医疗健康数据平台</h3>
+                        <p class="text-gray-200 mb-4">构建安全可靠的医疗数据共享平台，服务超过500万患者</p>
+                        <a href="#" class="text-teal-300 hover:text-white inline-flex items-center">
+                            查看详情 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white font-medium py-3 px-8 rounded-lg transition-custom">
+                    查看更多案例
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户评价与合作伙伴 -->
+    <section class="py-20 bg-teal-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- 客户评价 -->
+            <div class="mb-20">
+                <div class="text-center mb-12">
+                    <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">客户评价</h2>
+                    <div class="w-20 h-1 bg-teal-500 mx-auto"></div>
+                </div>
+                
+                <div class="relative">
+                    <div id="testimonial-slider" class="overflow-hidden">
+                        <div class="flex transition-transform duration-500" style="transform: translateX(0%);">
+                            <!-- 评价 1 -->
+                            <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                                <div class="bg-white p-8 rounded-xl shadow-md h-full">
+                                    <div class="text-teal-500 mb-4">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <p class="text-gray-600 mb-6 italic">
+                                        "Genexis 的团队展现了卓越的专业能力和创新思维，他们为我们量身定制的解决方案完美解决了我们的业务痛点，帮助我们在竞争激烈的市场中脱颖而出。"
+                                    </p>
+                                    <div class="flex items-center">
+                                        <img src="https://picsum.photos/id/64/100/100" alt="客户头像" class="w-12 h-12 rounded-full object-cover mr-4" />
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">张明</h4>
+                                            <p class="text-gray-500 text-sm">某金融科技公司 CEO</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 评价 2 -->
+                            <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                                <div class="bg-white p-8 rounded-xl shadow-md h-full">
+                                    <div class="text-teal-500 mb-4">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <p class="text-gray-600 mb-6 italic">
+                                        "与 Genexis 合作是我们做过的最明智的决定之一。他们不仅提供了高质量的技术解决方案，更在项目实施过程中给予了我们很多有价值的建议，真正成为了我们的战略伙伴。"
+                                    </p>
+                                    <div class="flex items-center">
+                                        <img src="https://picsum.photos/id/65/100/100" alt="客户头像" class="w-12 h-12 rounded-full object-cover mr-4" />
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">李娜</h4>
+                                            <p class="text-gray-500 text-sm">某制造业集团 CTO</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 评价 3 -->
+                            <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4">
+                                <div class="bg-white p-8 rounded-xl shadow-md h-full">
+                                    <div class="text-teal-500 mb-4">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                    </div>
+                                    <p class="text-gray-600 mb-6 italic">
+                                        "Genexis 的技术团队响应迅速，解决问题的能力令人印象深刻。他们为我们构建的系统稳定可靠，大大提升了我们的运营效率，降低了成本。"
+                                    </p>
+                                    <div class="flex items-center">
+                                        <img src="https://picsum.photos/id/91/100/100" alt="客户头像" class="w-12 h-12 rounded-full object-cover mr-4" />
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">王强</h4>
+                                            <p class="text-gray-500 text-sm">某医疗机构 信息部主任</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="prev-testimonial" class="absolute top-1/2 -left-4 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-teal-600 hover:bg-teal-50 transition-custom z-10">
+                        <i class="fa fa-chevron-left"></i>
+                    </button>
+                    <button id="next-testimonial" class="absolute top-1/2 -right-4 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-teal-600 hover:bg-teal-50 transition-custom z-10">
+                        <i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- 合作伙伴 -->
+            <div>
+                <div class="text-center mb-12">
+                    <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">合作伙伴</h2>
+                    <div class="w-20 h-1 bg-teal-500 mx-auto"></div>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
+                    <div class="grayscale hover:grayscale-0 transition-custom opacity-70 hover:opacity-100">
+                        <img src="https://picsum.photos/id/1/120/60" alt="合作伙伴1" class="h-12 object-contain" />
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-custom opacity-70 hover:opacity-100">
+                        <img src="https://picsum.photos/id/2/120/60" alt="合作伙伴2" class="h-12 object-contain" />
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-custom opacity-70 hover:opacity-100">
+                        <img src="https://picsum.photos/id/3/120/60" alt="合作伙伴3" class="h-12 object-contain" />
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-custom opacity-70 hover:opacity-100">
+                        <img src="https://picsum.photos/id/4/120/60" alt="合作伙伴4" class="h-12 object-contain" />
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-custom opacity-70 hover:opacity-100">
+                        <img src="https://picsum.photos/id/5/120/60" alt="合作伙伴5" class="h-12 object-contain" />
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-custom opacity-70 hover:opacity-100">
+                        <img src="https://picsum.photos/id/6/120/60" alt="合作伙伴6" class="h-12 object-contain" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新闻动态 -->
+    <section id="news" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">新闻动态</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">了解 Genexis 的最新动态和行业洞察</p>
+                <div class="w-20 h-1 bg-teal-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- 新闻 1 -->
+                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-custom">
+                    <img src="https://picsum.photos/id/160/600/400" alt="新闻图片" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <div class="text-gray-500 text-sm mb-3 flex items-center">
+                            <i class="fa fa-calendar-o mr-2"></i> 2023-10-15
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 hover:text-teal-600 transition-custom">
+                            <a href="#">Genexis 发布新一代人工智能解决方案</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            近日，Genexis 正式发布了新一代人工智能解决方案，该方案将帮助企业更高效地处理和分析数据，提升决策能力...
+                        </p>
+                        <a href="#" class="text-teal-600 hover:text-teal-700 inline-flex items-center font-medium">
+                            阅读全文 <i class="fa fa-long-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 新闻 2 -->
+                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-custom">
+                    <img src="https://picsum.photos/id/119/600/400" alt="新闻图片" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <div class="text-gray-500 text-sm mb-3 flex items-center">
+                            <i class="fa fa-calendar-o mr-2"></i> 2023-09-28
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 hover:text-teal-600 transition-custom">
+                            <a href="#">Genexis 与全球领先企业达成战略合作</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            今日，Genexis 宣布与全球领先的科技企业达成战略合作，双方将在云计算和物联网领域展开深度合作，共同开发创新解决方案...
+                        </p>
+                        <a href="#" class="text-teal-600 hover:text-teal-700 inline-flex items-center font-medium">
+                            阅读全文 <i class="fa fa-long-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <!-- 新闻 3 -->
+                <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-custom">
+                    <img src="https://picsum.photos/id/180/600/400" alt="新闻图片" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <div class="text-gray-500 text-sm mb-3 flex items-center">
+                            <i class="fa fa-calendar-o mr-2"></i> 2023-09-10
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 hover:text-teal-600 transition-custom">
+                            <a href="#">Genexis 荣获"年度最佳科技创新企业"奖项</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            在近日举办的行业峰会上，Genexis 凭借其在科技创新领域的卓越表现，荣获"年度最佳科技创新企业"奖项，这是对我们技术实力的高度认可...
+                        </p>
+                        <a href="#" class="text-teal-600 hover:text-teal-700 inline-flex items-center font-medium">
+                            阅读全文 <i class="fa fa-long-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white font-medium py-3 px-8 rounded-lg transition-custom">
+                    查看所有新闻
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-teal-500/5 to-teal-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">联系我们</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">无论您有任何疑问或需求，我们都将竭诚为您服务</p>
+                <div class="w-20 h-1 bg-teal-500 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white p-8 rounded-xl shadow-md h-full">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">发送消息</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 mb-2">姓名</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-custom" placeholder="请输入您的姓名">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 mb-2">邮箱</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-custom" placeholder="请输入您的邮箱">
+                            </div>
+                            <div class="mb-4">
+                                <label for="subject" class="block text-gray-700 mb-2">主题</label>
+                                <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-custom" placeholder="请输入消息主题">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 mb-2">消息内容</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-custom" placeholder="请输入您的消息内容"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-teal-600 hover:bg-teal-700 text-white font-medium py-3 px-6 rounded-lg transition-custom">
+                                发送消息
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white p-8 rounded-xl shadow-md mb-8">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">联系方式</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fa fa-map-marker text-teal-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">公司地址</h4>
+                                    <p class="text-gray-600">上海市浦东新区张江高科技园区博云路2号</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fa fa-phone text-teal-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">联系电话</h4>
+                                    <p class="text-gray-600">+86 21 5888 7777</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fa fa-envelope text-teal-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">电子邮箱</h4>
+                                    <p class="text-gray-600">info@genexis.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fa fa-clock-o text-teal-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">工作时间</h4>
+                                    <p class="text-gray-600">周一至周五: 9:00 - 18:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-gray-800 mb-4">关注我们</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-teal-100 hover:bg-teal-600 text-teal-600 hover:text-white rounded-full flex items-center justify-center transition-custom">
+                                    <i class="fa fa-weixin"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-teal-100 hover:bg-teal-600 text-teal-600 hover:text-white rounded-full flex items-center justify-center transition-custom">
+                                    <i class="fa fa-weibo"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-teal-100 hover:bg-teal-600 text-teal-600 hover:text-white rounded-full flex items-center justify-center transition-custom">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-teal-100 hover:bg-teal-600 text-teal-600 hover:text-white rounded-full flex items-center justify-center transition-custom">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 简易地图 -->
+                    <div class="rounded-xl overflow-hidden shadow-md h-64 bg-teal-100 relative">
+                        <img src="https://picsum.photos/id/101/800/400" alt="公司位置地图" class="w-full h-full object-cover" />
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-teal-600 rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fa fa-map-marker text-white text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-teal-400">Genexis</h3>
+                    <p class="text-gray-400 mb-6">
+                        以技术赋能产业，用创新连接未来，为全球客户提供前沿的科技解决方案。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-teal-400 transition-custom">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-teal-400 transition-custom">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-teal-400 transition-custom">
+                            <i class="fa fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-teal-400 transition-custom">
+                            <i class="fa fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-teal-400 transition-custom">首页</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-teal-400 transition-custom">关于我们</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-teal-400 transition-custom">业务范围</a></li>
+                        <li><a href="#cases" class="text-gray-400 hover:text-teal-400 transition-custom">案例展示</a></li>
+                        <li><a href="#news" class="text-gray-400 hover:text-teal-400 transition-custom">新闻动态</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-teal-400 transition-custom">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">业务领域</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-teal-400 transition-custom">软件开发</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-teal-400 transition-custom">云计算服务</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-teal-400 transition-custom">网络安全</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-teal-400 transition-custom">数据分析</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-teal-400 transition-custom">物联网解决方案</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-teal-400 transition-custom">技术咨询与培训</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系信息</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-teal-400 mt-1 mr-3"></i>
+                            <span class="text-gray-400">上海市浦东新区张江高科技园区博云路2号</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-teal-400 mr-3"></i>
+                            <span class="text-gray-400">+86 21 5888 7777</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-teal-400 mr-3"></i>
+                            <span class="text-gray-400">info@genexis.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 Genexis. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-teal-600 hover:bg-teal-700 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                navbar.classList.add('py-2', 'shadow');
+                navbar.classList.remove('py-4');
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2', 'shadow');
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 关闭移动端菜单
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // 返回顶部
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 客户评价轮播
+        const testimonialSlider = document.getElementById('testimonial-slider').querySelector('div');
+        const prevBtn = document.getElementById('prev-testimonial');
+        const nextBtn = document.getElementById('next-testimonial');
+        let currentSlide = 0;
+        const totalSlides = 3;
+        
+        function updateSlider() {
+            let slideWidth = 100;
+            if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+                slideWidth = 50;
+            } else if (window.innerWidth >= 1024) {
+                slideWidth = 100 / 3;
+            }
+            
+            testimonialSlider.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        }
+        
+        prevBtn.addEventListener('click', function() {
+            currentSlide = Math.max(0, currentSlide - 1);
+            updateSlider();
+        });
+        
+        nextBtn.addEventListener('click', function() {
+            let maxSlide = totalSlides - 1;
+            if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+                maxSlide = totalSlides - 2;
+            } else if (window.innerWidth >= 1024) {
+                maxSlide = totalSlides - 3;
+            }
+            currentSlide = Math.min(maxSlide, currentSlide + 1);
+            updateSlider();
+        });
+        
+        window.addEventListener('resize', updateSlider);
+        
+        // 数字计数动画
+        const counters = document.querySelectorAll('.counter');
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    let count = 0;
+                    const increment = target / 50;
+                    const updateCount = () => {
+                        count += increment;
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count);
+                            setTimeout(updateCount, 30);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                    observer.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+        
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+    </script>
+</body>
+</html>
