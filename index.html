@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genexis - 创新科技解决方案提供商</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        // 配置Tailwind主题颜色
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // 主题色：#2F6B73
+                        teal: {
+                            50: '#E9F2F3',
+                            100: '#C7DADC',
+                            200: '#A4C3C5',
+                            300: '#81ADAE',
+                            400: '#5E9696',
+                            500: '#3C8082', // 辅助亮色
+                            600: '#34747A',
+                            700: '#2F6B73', // 主色调
+                            800: '#204B50',
+                            900: '#122F33',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .transition-custom {
+                transition: all 0.3s ease;
+            }
+            /* 滚动浮现效果的起始状态 */
+            .fade-in-on-scroll {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            }
+            /* 滚动浮现效果的结束状态 */
+            .fade-in-on-scroll.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 overflow-x-hidden">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="flex items-center space-x-2">
+                    <span class="text-teal-700 text-2xl font-bold">Genexis</span>
+                </a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-teal-700 transition-custom font-medium">首页</a>
+                    <a href="#about" class="text-gray-700 hover:text-teal-700 transition-custom font-medium">关于我们</a>
+                    <a href="#platform" class="text-gray-700 hover:text-teal-700 transition-custom font-medium">AI 平台</a>
+                    <a href="#team" class="text-gray-700 hover:text-teal-700 transition-custom font-medium">团队成员</a>
+                    <a href="#services" class="text-gray-700 hover:text-teal-700 transition-custom font-medium">业务范围</a>
+                    <a href="#roadmap" class="text-gray-700 hover:text-teal-700 transition-custom font-medium">发展路径</a>
+                    <a href="#partners" class="text-gray-700 hover:text-teal-700 transition-custom font-medium">合作伙伴</a>
+                    <a href="#news" class="text-gray-700 hover:text-teal-700 transition-custom font-medium">新闻动态</a>
+                    <a href="#contact" class="text-gray-700 hover:text-teal-700 transition-custom font-medium">联系我们</a>
+                </div>
+                
+                <a href="#contact" class="hidden md:inline-block bg-teal-700 hover:bg-teal-800 text-white font-medium py-2 px-5 rounded-lg transition-custom">
+                    联系咨询
+                </a>
+                
+                <button id="menu-toggle" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="#home" class="block text-gray-700 hover:text-teal-700 transition-custom py-2">首页</a>
+                <a href="#about" class="block text-gray-700 hover:text-teal-700 transition-custom py-2">关于我们</a>
+                <a href="#platform" class="block text-gray-700 hover:text-teal-700 transition-custom py-2">AI 平台</a>
+                <a href="#team" class="block text-gray-700 hover:text-teal-700 transition-custom py-2">团队成员</a>
+                <a href="#services" class="block text-gray-700 hover:text-teal-700 transition-custom py-2">业务范围</a>
+                <a href="#roadmap" class="block text-gray-700 hover:text-teal-700 transition-custom py-2">发展路径</a>
+                <a href="#partners" class="block text-gray-700 hover:text-teal-700 transition-custom py-2">合作伙伴</a>
+                <a href="#news" class="block text-gray-700 hover:text-teal-700 transition-custom py-2">新闻动态</a>
+                <a href="#contact" class="block bg-teal-700 hover:bg-teal-800 text-white font-medium py-2 px-4 rounded-lg text-center transition-custom">
+                    联系咨询
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="pt-24 md:pt-0 min-h-screen flex items-center relative overflow-hidden bg-teal-700">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-teal-400 blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-teal-300 blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-0 relative z-10">
+            <div class="max-w-3xl">
+                <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight text-white mb-6 text-shadow fade-in-on-scroll">
+                    Genexis<br>
+                    <span class="text-teal-200">引领智能创新的先锋</span>
+                </h1>
+                
+                <p class="text-[clamp(1rem,2vw,1.25rem)] text-teal-50 mb-8 max-w-2xl fade-in-on-scroll" style="transition-delay: 0.2s;">
+                    以技术赋能产业，用创新连接未来。我们致力于为全球客户提供前沿的科技解决方案，助力企业数字化转型与可持续发展。
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 fade-in-on-scroll" style="transition-delay: 0.4s;">
+                    <a href="#about" class="bg-white text-teal-700 hover:bg-teal-50 font-bold py-3 px-8 rounded-lg transition-custom text-center shadow-lg">
+                        了解更多
+                    </a>
+                    <a href="#contact" class="border-2 border-teal-200 text-white hover:bg-white hover:text-teal-700 font-medium py-3 px-8 rounded-lg transition-custom text-center">
+                        联系我们
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hidden lg:block absolute right-0 bottom-0 w-1/2 h-full pointer-events-none">
+            <img src="https://picsum.photos/id/180/800/1000" alt="科技创新" class="w-full h-full object-cover opacity-50 mix-blend-overlay" />
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-on-scroll">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">关于 Genexis</h2>
+                <div class="w-20 h-1 bg-teal-700 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-on-scroll">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">我们的故事</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Genexis 成立于2010年，由一群拥有深厚技术背景和创新精神的专业人士创立。多年来，我们始终专注于为各行业提供领先的技术解决方案，帮助企业应对数字化转型挑战。
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        凭借卓越的技术实力和客户至上的服务理念，我们已为全球超过500家企业提供了专业服务，涵盖金融、制造、医疗、教育等多个领域。
+                    </p>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+                        <div class="p-4 fade-in-on-scroll" style="transition-delay: 0.1s;">
+                            <div class="text-teal-700 text-3xl font-bold mb-2 counter" data-target="13">0</div>
+                            <p class="text-gray-600">年行业经验</p>
+                        </div>
+                        <div class="p-4 fade-in-on-scroll" style="transition-delay: 0.2s;">
+                            <div class="text-teal-700 text-3xl font-bold mb-2 counter" data-target="500">0</div>
+                            <p class="text-gray-600">合作客户</p>
+                        </div>
+                        <div class="p-4 fade-in-on-scroll" style="transition-delay: 0.3s;">
+                            <div class="text-teal-700 text-3xl font-bold mb-2 counter" data-target="20">0</div>
+                            <p class="text-gray-600">全球分支机构</p>
+                        </div>
+                        <div class="p-4 fade-in-on-scroll" style="transition-delay: 0.4s;">
+                            <div class="text-teal-700 text-3xl font-bold mb-2 counter" data-target="120">0</div>
+                            <p class="text-gray-600">技术专利</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative fade-in-on-scroll" style="transition-delay: 0.3s;">
+                    <img src="https://picsum.photos/id/20/600/700" alt="公司办公环境" class="w-full h-auto rounded-lg shadow-xl" />
+                    <div class="absolute -bottom-6 -left-6 bg-teal-700 text-white p-6 rounded-lg shadow-lg max-w-xs">
+                        <h4 class="text-xl font-semibold mb-2">我们的使命</h4>
+                        <p>通过创新技术推动行业变革，为客户创造可持续的价值增长</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="platform" class="py-20 bg-teal-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-on-scroll">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">Genexis AI 平台</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">
+                    **AI 驱动的跨物种长寿药物发现平台 (PAW Therapeutics)**：利用大规模生物数据和深度学习，加速靶点识别和药物开发，实现健康长寿。
+                </p>
+                <div class="w-20 h-1 bg-teal-700 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-10">
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-custom border-t-4 border-teal-700 fade-in-on-scroll">
+                    <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-braille text-teal-700 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">核心技术：AI 靶点识别</h3>
+                    <p class="text-gray-600 mb-4">
+                        利用深度神经网络分析海量基因组、蛋白质组和代谢组数据。模型可预测与衰老和疾病相关的关键生物学路径和药物靶点，速度远超传统方法。
+                    </p>
+                    <ul class="text-sm text-gray-500 list-disc list-inside space-y-1">
+                        <li>深度学习预测模型</li>
+                        <li>高通量基因组分析</li>
+                        <li>疾病-通路关联评分</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-custom border-t-4 border-teal-700 fade-in-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-paw text-teal-700 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">跨物种转化模型</h3>
+                    <p class="text-gray-600 mb-4">
+                        整合狗、猫、小鼠乃至人类的生物数据，发现保守的、跨越物种的衰老机制。这使得药物发现更具通用性和成功率，加速从动物模型到人类临床的转化。
+                    </p>
+                    <ul class="text-sm text-gray-500 list-disc list-inside space-y-1">
+                        <li>多物种数据融合平台</li>
+                        <li>保守机制筛选</li>
+                        <li>药物作用泛化预测</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-custom border-t-4 border-teal-700 fade-in-on-scroll" style="transition-delay: 0.4s;">
+                    <div class="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-cubes text-teal-700 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">加速药物开发路径</h3>
+                    <p class="text-gray-600 mb-4">
+                        平台具备强大的虚拟筛选能力，能够快速评估数百万种化合物与识别靶点的结合亲和力，有效缩小实验范围，显著降低研发成本和时间。
+                    </p>
+                    <ul class="text-sm text-gray-500 list-disc list-inside space-y-1">
+                        <li>高精度分子对接模拟</li>
+                        <li>ADMET 毒性预测</li>
+                        <li>临床前验证加速策略</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in-on-scroll" style="transition-delay: 0.6s;">
+                <a href="#contact" class="inline-block bg-teal-700 hover:bg-teal-800 text-white font-medium py-3 px-8 rounded-lg transition-custom">
+                    探索 AI 药物发现合作
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-on-scroll">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">核心团队</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">我们的团队由行业顶尖专家和富有激情的创新人才组成</p>
+                <div class="w-20 h-1 bg-teal-700 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <div class="bg-teal-50 rounded-xl shadow-lg overflow-hidden text-center transition-custom hover:shadow-xl group fade-in-on-scroll">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/64/400/500" alt="创始人 & CEO" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">张伟</h3>
+                        <p class="text-teal-700 font-medium mb-3">创始人 & CEO</p>
+                        <p class="text-gray-500 text-sm mb-4">
+                            拥有20年科技行业经验，专注于战略规划与业务拓展。
+                        </p>
+                        <div class="flex justify-center space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-teal-700"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-teal-700"><i class="fa fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-teal-50 rounded-xl shadow-lg overflow-hidden text-center transition-custom hover:shadow-xl group fade-in-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/83/400/500" alt="首席技术官" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">李明</h3>
+                        <p class="text-teal-700 font-medium mb-3">首席技术官 (CTO)</p>
+                        <p class="text-gray-500 text-sm mb-4">
+                            顶级AI专家，领导公司技术创新与研发工作。
+                        </p>
+                        <div class="flex justify-center space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-teal-700"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-teal-700"><i class="fa fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-teal-50 rounded-xl shadow-lg overflow-hidden text-center transition-custom hover:shadow-xl group fade-in-on-scroll" style="transition-delay: 0.4s;">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/1025/400/500" alt="产品总监" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">王芳</h3>
+                        <p class="text-teal-700 font-medium mb-3">产品总监</p>
+                        <p class="text-gray-500 text-sm mb-4">
+                            精通用户体验和市场需求分析，负责产品路线图。
+                        </p>
+                        <div class="flex justify-center space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-teal-700"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-teal-700"><i class="fa fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-teal-50 rounded-xl shadow-lg overflow-hidden text-center transition-custom hover:shadow-xl group fade-in-on-scroll" style="transition-delay: 0.6s;">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://picsum.photos/id/84/400/500" alt="市场总监" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">赵丽</h3>
+                        <p class="text-teal-700 font-medium mb-3">市场总监</p>
+                        <p class="text-gray-500 text-sm mb-4">
+                            负责全球市场战略，推动品牌国际化。
+                        </p>
+                        <div class="flex justify-center space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-teal-700"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-teal-700"><i class="fa fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in-on-scroll" style="transition-delay: 0.8s;">
+                <a href="#" class="inline-block border-2 border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white font-medium py-3 px-8 rounded-lg transition-custom">
+                    查看所有团队成员
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-20 bg-teal-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-on-scroll">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">我们的业务范围</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Genexis 提供全方位的技术解决方案，满足不同行业客户的多样化需求</p>
+                <div class="w-20 h-1 bg-teal-700 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom p-8 border-t-4 border-teal-700 fade-in-on-scroll">
+                    <div class="w-14 h-14 bg-teal-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-code text-teal-700 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">软件开发</h3>
+                    <p class="text-gray-600">
+                        定制化软件开发服务，包括企业应用、移动应用和Web平台，满足客户特定业务需求。
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom p-8 border-t-4 border-teal-700 fade-in-on-scroll" style="transition-delay: 0.1s;">
+                    <div class="w-14 h-14 bg-teal-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-cloud text-teal-700 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">云计算服务</h3>
+                    <p class="text-gray-600">
+                        提供云迁移、云基础设施搭建和管理服务，帮助企业降低成本，提升运营效率。
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom p-8 border-t-4 border-teal-700 fade-in-on-scroll" style="transition-delay: 0.2s;">
+                    <div class="w-14 h-14 bg-teal-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-shield text-teal-700 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">网络安全</h3>
+                    <p class="text-gray-600">
+                        全方位的网络安全解决方案，包括风险评估、安全防护和应急响应服务。
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom p-8 border-t-4 border-teal-700 fade-in-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="w-14 h-14 bg-teal-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-line-chart text-teal-700 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">数据分析</h3>
+                    <p class="text-gray-600">
+                        利用先进的数据分析技术，帮助企业挖掘数据价值，支持业务决策和增长。
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom p-8 border-t-4 border-teal-700 fade-in-on-scroll" style="transition-delay: 0.4s;">
+                    <div class="w-14 h-14 bg-teal-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-cogs text-teal-700 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">物联网解决方案</h3>
+                    <p class="text-gray-600">
+                        连接智能设备与系统，构建高效的物联网生态，实现企业智能化转型。
+                    </p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom p-8 border-t-4 border-teal-700 fade-in-on-scroll" style="transition-delay: 0.5s;">
+                    <div class="w-14 h-14 bg-teal-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-graduation-cap text-teal-700 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">技术咨询与培训</h3>
+                    <p class="text-gray-600">
+                        专业的技术咨询服务和定制化培训课程，提升企业团队的技术能力。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-on-scroll">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">技术发展路径</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">我们清晰规划了未来三年的技术演进路线，确保持续创新</p>
+                <div class="w-20 h-1 bg-teal-700 mx-auto mt-4"></div>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto">
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-teal-200 hidden md:block"></div>
+
+                <div class="flex flex-col md:flex-row mb-12 relative fade-in-on-scroll">
+                    <div class="md:w-1/2 md:pr-12">
+                        <div class="md:text-right bg-teal-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-custom">
+                            <h4 class="text-xl font-semibold text-teal-700 mb-2">第一年：基础巩固与AI集成</h4>
+                            <p class="text-gray-700 mb-2 font-medium">重点：云原生与机器学习应用</p>
+                            <ul class="text-gray-600 text-sm list-disc list-inside text-left md:text-right space-y-1">
+                                <li>完成所有核心产品线的云原生架构升级</li>
+                                <li>集成LLM（大型语言模型）到客服与数据分析工具</li>
+                                <li>推出首个行业定制化的AI驱动解决方案</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-teal-700 rounded-full flex items-center justify-center ring-8 ring-white shadow-lg hidden md:flex">
+                        <i class="fa fa-rocket text-white"></i>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row mb-12 relative fade-in-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="md:w-1/2 md:pr-12"></div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-teal-700 rounded-full flex items-center justify-center ring-8 ring-white shadow-lg hidden md:flex">
+                        <i class="fa fa-flask text-white"></i>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12">
+                        <div class="bg-teal-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-custom">
+                            <h4 class="text-xl font-semibold text-teal-700 mb-2">第二年：前沿探索与生态构建</h4>
+                            <p class="text-gray-700 mb-2 font-medium">重点：Web3.0与区块链技术应用</p>
+                            <ul class="text-gray-600 text-sm list-disc list-inside space-y-1">
+                                <li>启动分布式身份（DID）和数据安全项目</li>
+                                <li>建立开放API平台，吸引第三方开发者</li>
+                                <li>探索量子计算在特定领域的应用潜力</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row relative fade-in-on-scroll" style="transition-delay: 0.6s;">
+                    <div class="md:w-1/2 md:pr-12">
+                        <div class="md:text-right bg-teal-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-custom">
+                            <h4 class="text-xl font-semibold text-teal-700 mb-2">第三年：市场领导与可持续技术</h4>
+                            <p class="text-gray-700 mb-2 font-medium">重点：全球化与绿色计算</p>
+                            <ul class="text-gray-600 text-sm list-disc list-inside text-left md:text-right space-y-1">
+                                <li>实现全球十大主要市场的业务覆盖</li>
+                                <li>将绿色计算和能源效率纳入所有新解决方案的标准</li>
+                                <li>成为两个核心业务领域的市场领导者</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-teal-700 rounded-full flex items-center justify-center ring-8 ring-white shadow-lg hidden md:flex">
+                        <i class="fa fa-globe text-white"></i>
+                    </div>
+                    <div class="md:w-1/2 md:pl-12"></div>
+                </div>
+            </div>
+
+            <div class="text-center mt-16 fade-in-on-scroll" style="transition-delay: 0.9s;">
+                <p class="text-gray-700 text-lg font-medium">致力于保持在技术前沿的领导地位。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="partners" class="py-20 bg-teal-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div>
+                <div class="text-center mb-12 fade-in-on-scroll">
+                    <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">合作伙伴</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">我们与全球领先的科技公司和行业巨头保持紧密合作</p>
+                    <div class="w-20 h-1 bg-teal-700 mx-auto mt-4"></div>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center">
+                    <div class="grayscale hover:grayscale-0 transition-custom opacity-70 hover:opacity-100 fade-in-on-scroll">
+                        <img src="https://picsum.photos/id/1/120/60" alt="合作伙伴1" class="h-12 object-contain" />
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-custom opacity-70 hover:opacity-100 fade-in-on-scroll" style="transition-delay: 0.1s;">
+                        <img src="https://picsum.photos/id/2/120/60" alt="合作伙伴2" class="h-12 object-contain" />
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-custom opacity-70 hover:opacity-100 fade-in-on-scroll" style="transition-delay: 0.2s;">
+                        <img src="https://picsum.photos/id/3/120/60" alt="合作伙伴3" class="h-12 object-contain" />
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-custom opacity-70 hover:opacity-100 fade-in-on-scroll" style="transition-delay: 0.3s;">
+                        <img src="https://picsum.photos/id/4/120/60" alt="合作伙伴4" class="h-12 object-contain" />
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-custom opacity-70 hover:opacity-100 fade-in-on-scroll" style="transition-delay: 0.4s;">
+                        <img src="https://picsum.photos/id/5/120/60" alt="合作伙伴5" class="h-12 object-contain" />
+                    </div>
+                    <div class="grayscale hover:grayscale-0 transition-custom opacity-70 hover:opacity-100 fade-in-on-scroll" style="transition-delay: 0.5s;">
+                        <img src="https://picsum.photos/id/6/120/60" alt="合作伙伴6" class="h-12 object-contain" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="py-20 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-on-scroll">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">新闻动态</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">了解 Genexis 的最新动态和行业洞察</p>
+                <div class="w-20 h-1 bg-teal-700 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <article class="bg-teal-50 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-custom fade-in-on-scroll">
+                    <img src="https://picsum.photos/id/160/600/400" alt="新闻图片" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <div class="text-gray-500 text-sm mb-3 flex items-center">
+                            <i class="fa fa-calendar-o mr-2"></i> 2023-10-15
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 hover:text-teal-700 transition-custom">
+                            <a href="#">Genexis 发布新一代人工智能解决方案</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            近日，Genexis 正式发布了新一代人工智能解决方案，该方案将帮助企业更高效地处理和分析数据，提升决策能力...
+                        </p>
+                        <a href="#" class="text-teal-700 hover:text-teal-800 inline-flex items-center font-medium">
+                            阅读全文 <i class="fa fa-long-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="bg-teal-50 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-custom fade-in-on-scroll" style="transition-delay: 0.1s;">
+                    <img src="https://picsum.photos/id/119/600/400" alt="新闻图片" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <div class="text-gray-500 text-sm mb-3 flex items-center">
+                            <i class="fa fa-calendar-o mr-2"></i> 2023-09-28
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 hover:text-teal-700 transition-custom">
+                            <a href="#">Genexis 与全球领先企业达成战略合作</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            今日，Genexis 宣布与全球领先的科技企业达成战略合作，双方将在云计算和物联网领域展开深度合作，共同开发创新解决方案...
+                        </p>
+                        <a href="#" class="text-teal-700 hover:text-teal-800 inline-flex items-center font-medium">
+                            阅读全文 <i class="fa fa-long-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="bg-teal-50 rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-custom fade-in-on-scroll" style="transition-delay: 0.2s;">
+                    <img src="https://picsum.photos/id/180/600/400" alt="新闻图片" class="w-full h-48 object-cover" />
+                    <div class="p-6">
+                        <div class="text-gray-500 text-sm mb-3 flex items-center">
+                            <i class="fa fa-calendar-o mr-2"></i> 2023-09-10
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3 hover:text-teal-700 transition-custom">
+                            <a href="#">Genexis 荣获"年度最佳科技创新企业"奖项</a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            在近日举办的行业峰会上，Genexis 凭借其在科技创新领域的卓越表现，荣获"年度最佳科技创新企业"奖项，这是对我们技术实力的高度认可...
+                        </p>
+                        <a href="#" class="text-teal-700 hover:text-teal-800 inline-flex items-center font-medium">
+                            阅读全文 <i class="fa fa-long-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="text-center mt-12 fade-in-on-scroll" style="transition-delay: 0.4s;">
+                <a href="#" class="inline-block border-2 border-teal-700 text-teal-700 hover:bg-teal-700 hover:text-white font-medium py-3 px-8 rounded-lg transition-custom">
+                    查看所有新闻
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-gradient-to-br from-teal-700/5 to-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-on-scroll">
+                <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-gray-900 mb-4">联系我们</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">无论您有任何疑问或需求，我们都将竭诚为您服务</p>
+                <div class="w-20 h-1 bg-teal-700 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="fade-in-on-scroll" style="transition-delay: 0.1s;">
+                    <div class="bg-white p-8 rounded-xl shadow-md h-full">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">发送消息</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-gray-700 mb-2">姓名</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-700 focus:border-transparent transition-custom" placeholder="请输入您的姓名">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 mb-2">邮箱</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-700 focus:border-transparent transition-custom" placeholder="请输入您的邮箱">
+                            </div>
+                            <div class="mb-4">
+                                <label for="subject" class="block text-gray-700 mb-2">主题</label>
+                                <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-700 focus:border-transparent transition-custom" placeholder="请输入消息主题">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 mb-2">消息内容</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-700 focus:border-transparent transition-custom" placeholder="请输入您的消息内容"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-teal-700 hover:bg-teal-800 text-white font-medium py-3 px-6 rounded-lg transition-custom">
+                                发送消息
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="fade-in-on-scroll" style="transition-delay: 0.3s;">
+                    <div class="bg-white p-8 rounded-xl shadow-md mb-8">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">联系方式</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fa fa-map-marker text-teal-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">公司地址</h4>
+                                    <p class="text-gray-600">上海市浦东新区张江高科技园区博云路2号</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fa fa-phone text-teal-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">联系电话</h4>
+                                    <p class="text-gray-600">+86 21 5888 7777</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fa fa-envelope text-teal-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">电子邮箱</h4>
+                                    <p class="text-gray-600">info@genexis.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 bg-teal-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fa fa-clock-o text-teal-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">工作时间</h4>
+                                    <p class="text-gray-600">周一至周五: 9:00 - 18:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-semibold text-gray-800 mb-4">关注我们</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-teal-100 hover:bg-teal-700 text-teal-700 hover:text-white rounded-full flex items-center justify-center transition-custom">
+                                    <i class="fa fa-weixin"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-teal-100 hover:bg-teal-700 text-teal-700 hover:text-white rounded-full flex items-center justify-center transition-custom">
+                                    <i class="fa fa-weibo"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-teal-100 hover:bg-teal-700 text-teal-700 hover:text-white rounded-full flex items-center justify-center transition-custom">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-teal-100 hover:bg-teal-700 text-teal-700 hover:text-white rounded-full flex items-center justify-center transition-custom">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="rounded-xl overflow-hidden shadow-md h-64 bg-teal-100 relative">
+                        <img src="https://picsum.photos/id/101/800/400" alt="公司位置地图" class="w-full h-full object-cover" />
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-teal-700 rounded-full flex items-center justify-center shadow-lg">
+                            <i class="fa fa-map-marker text-white text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-teal-700 text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Genexis</h3>
+                    <p class="text-teal-100 mb-6">
+                        以技术赋能产业，用创新连接未来，为全球客户提供前沿的科技解决方案。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-teal-200 hover:text-white transition-custom">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-teal-200 hover:text-white transition-custom">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-teal-200 hover:text-white transition-custom">
+                            <i class="fa fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-teal-200 hover:text-white transition-custom">
+                            <i class="fa fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-teal-100 hover:text-white transition-custom">首页</a></li>
+                        <li><a href="#about" class="text-teal-100 hover:text-white transition-custom">关于我们</a></li>
+                        <li><a href="#platform" class="text-teal-100 hover:text-white transition-custom">AI 平台</a></li>
+                        <li><a href="#team" class="text-teal-100 hover:text-white transition-custom">团队成员</a></li>
+                        <li><a href="#services" class="text-teal-100 hover:text-white transition-custom">业务范围</a></li>
+                        <li><a href="#roadmap" class="text-teal-100 hover:text-white transition-custom">发展路径</a></li>
+                        <li><a href="#news" class="text-teal-100 hover:text-white transition-custom">新闻动态</a></li>
+                        <li><a href="#contact" class="text-teal-100 hover:text-white transition-custom">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">业务领域</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-teal-100 hover:text-white transition-custom">软件开发</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition-custom">云计算服务</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition-custom">网络安全</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition-custom">数据分析</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition-custom">物联网解决方案</a></li>
+                        <li><a href="#" class="text-teal-100 hover:text-white transition-custom">技术咨询与培训</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 text-white">联系信息</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker text-teal-300 mt-1 mr-3"></i>
+                            <span class="text-teal-100">上海市浦东新区张江高科技园区博云路2号</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-teal-300 mr-3"></i>
+                            <span class="text-teal-100">+86 21 5888 7777</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-teal-300 mr-3"></i>
+                            <span class="text-teal-100">info@genexis.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-teal-600 pt-8 text-center text-teal-200">
+                <p>&copy; 2023 Genexis. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-teal-700 hover:bg-teal-800 text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50">
+        <i class="fa fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                navbar.classList.add('py-2', 'shadow');
+                navbar.classList.remove('py-4');
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2', 'shadow');
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 关闭移动端菜单
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // --- 滚动浮现（Fade-In on Scroll）效果实现 ---
+        const fadeElements = document.querySelectorAll('.fade-in-on-scroll');
+        const fadeObserverOptions = {
+            rootMargin: '0px',
+            threshold: 0.2 // 当元素有 20% 进入视口时触发
+        };
+        
+        const fadeObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 当进入视口时，添加 is-visible 类来触发 CSS 过渡
+                    entry.target.classList.add('is-visible');
+                    // 一旦动画触发，停止观察该元素
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, fadeObserverOptions);
+        
+        fadeElements.forEach(element => {
+            fadeObserver.observe(element);
+        });
+        
+        // --- 数字计数动画 ---
+        const counters = document.querySelectorAll('.counter');
+        const counterObserverOptions = {
+            threshold: 0.5
+        };
+        
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    let count = 0;
+                    const increment = target / 50;
+                    const updateCount = () => {
+                        count += increment;
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count);
+                            setTimeout(updateCount, 30);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, counterObserverOptions);
+        
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+    </script>
+</body>
+</html>
